@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=4 uid="uid://bp630txj085vw"]
+
+[ext_resource type="Texture2D" uid="uid://8jh8pabph1c7" path="res://assets/images/blocks/atlas.png" id="1_2d8ib"]
+[ext_resource type="PackedScene" uid="uid://duhm5hmwdytw6" path="res://platformer/player.tscn" id="2_s3p4g"]
+[ext_resource type="Texture2D" uid="uid://cdtip72ve2yfa" path="res://assets/images/flag_1.png" id="3_n1d3i"]
+[ext_resource type="Texture2D" uid="uid://1pc2ay12b7q3" path="res://assets/images/flag_2.png" id="4_llo3l"]
+[ext_resource type="PackedScene" uid="uid://47a5hap0ihlg" path="res://platformer/coin.tscn" id="4_wj1e5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wj1e5"]
+texture = ExtResource("1_2d8ib")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[sub_resource type="TileSet" id="TileSet_1fbxk"]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wj1e5")
+
+[sub_resource type="GDScript" id="GDScript_llo3l"]
+script/source = "extends TileMapLayer
+
+func _process(delta: float) -> void:
+	position.x = MemoryValues.circles_position_x_delta * 16
+	position.y = MemoryValues.circles_position_y_delta * 16
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogsn5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n1d3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_llo3l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Test" type="Node2D"]
+texture_filter = 1
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAgAAAAAAAEAAAAAAAkAAAADAAAAAAABAAgAAAADAAAAAAABAAkAAAABAAIAAAACAAgAAAABAAAAAAACAAkAAAABAAIAAAADAAgAAAACAAAAAAADAAkAAAACAAIAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAIAAAARAAgAAAABAAAAAAARAAkAAAABAAIAAAASAAgAAAACAAAAAAASAAkAAAACAAIAAAAAAAcAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAIAAAAAAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAEAAAABAAQAAAACAAEAAAABAAUAAAACAAEAAAABAAYAAAACAAEAAAABAAcAAAACAAEAAAAGAAgAAAAEAAAAAAAGAAkAAAAEAAAAAAANAAgAAAAEAAAAAAANAAkAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_1fbxk")
+
+[node name="CircleThingies" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAEAAMAAAADAAAAAAAEAAQAAAADAAAAAAAEAAUAAAADAAAAAAAFAAMAAAADAAAAAAAFAAUAAAADAAAAAAAGAAMAAAADAAAAAAAGAAQAAAADAAAAAAAGAAUAAAADAAAAAAAJAAQAAAADAAAAAAAJAAUAAAADAAAAAAAJAAYAAAADAAAAAAAKAAQAAAADAAAAAAAKAAYAAAADAAAAAAALAAQAAAADAAAAAAALAAYAAAADAAAAAAAMAAQAAAADAAAAAAAMAAUAAAADAAAAAAAMAAYAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_1fbxk")
+script = SubResource("GDScript_llo3l")
+
+[node name="Player" parent="." instance=ExtResource("2_s3p4g")]
+position = Vector2(6, 17)
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Flag" type="AnimatedSprite2D" parent="."]
+position = Vector2(142, 60)
+sprite_frames = SubResource("SpriteFrames_ogsn5")
+autoplay = "default"
+
+[node name="Coin" parent="." instance=ExtResource("4_wj1e5")]
+position = Vector2(44, 41)
+index = 7

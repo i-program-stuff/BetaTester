@@ -1,5 +1,0 @@
-extends Window
-
-func _ready() -> void:
-	close_requested.connect(func(): queue_free())
-	# TODO

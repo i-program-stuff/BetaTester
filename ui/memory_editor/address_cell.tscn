@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxa3qk4sqr0cd"]
+
+[ext_resource type="Script" uid="uid://bjpf1oeulig4" path="res://ui/memory_editor/scripts/address_cell.gd" id="1_50y0e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y41jg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_50y0e"]
+
+[node name="AddressCell" type="HBoxContainer"]
+offset_right = 130.0
+offset_bottom = 35.0
+script = ExtResource("1_50y0e")
+
+[node name="VSeparatorStart" type="VSeparator" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y41jg")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "0xC0FFEE:"
+
+[node name="VSeparatorMiddle" type="VSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y41jg")
+
+[node name="Value" type="SpinBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+
+[node name="VSeparatorEnd" type="VSeparator" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_50y0e")
+
+[connection signal="value_changed" from="Value" to="." method="_on_value_value_changed"]

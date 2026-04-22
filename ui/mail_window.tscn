@@ -1,0 +1,137 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjo82jjgns1aa"]
+
+[ext_resource type="Theme" uid="uid://cu1yfhvb17bn2" path="res://assets/base_theme.tres" id="1_i6bx2"]
+[ext_resource type="Script" uid="uid://bexo5wnywhu36" path="res://ui/scripts/mail_window.gd" id="2_5n2ae"]
+
+[node name="MailWindow" type="Window"]
+title = "Mail"
+position = Vector2i(100, 36)
+size = Vector2i(700, 450)
+theme = ExtResource("1_i6bx2")
+script = ExtResource("2_5n2ae")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(700, 450)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="SubViewportContainer/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 110
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="SubViewportContainer/SubViewport/Control/HSplitContainer"]
+layout_mode = 2
+split_offset = 200
+
+[node name="YourMail" type="Panel" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/YourMail"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 7.0
+offset_right = 39.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "Your Mail:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/YourMail"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bimtenbo" type="Button" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/YourMail/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 0
+text = "Game Testing for 
+Bimtenbo Studios"
+
+[node name="Crypto" type="Button" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/YourMail/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Based on your past
+activity, we have issued
+a 50% off coupon on
+ropes and ceiling fans"
+
+[node name="Package" type="Button" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/YourMail/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Mental Weekly: 
+Psychological Effects of
+a dev making a Game 
+in 72 hours."
+
+[node name="MailContents" type="Panel" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/MailContents"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.831
+offset_left = 4.0
+offset_top = 15.0
+offset_right = -188.246
+offset_bottom = 64.0
+text = "  From: Bimtenbo Studios
+  To: (YOU)"
+
+[node name="HSeparator" type="HSeparator" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/MailContents"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.161
+anchor_bottom = 0.161
+offset_left = 17.0
+offset_top = -73.45
+offset_right = 474.0
+offset_bottom = 84.55
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Control/HSplitContainer/HSplitContainer2/MailContents"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 94.0
+offset_right = 55.0
+offset_bottom = 117.0
+text = "Hello!
+We've just released our new game and we want you to
+Test it out!
+
+It's a bit buggy because we fired all our devs and 
+replaced them with AI, but we've also packaged a 
+Game Memory Edit Tool which you can use to change
+the characteristics of the game (gravity, jump height, etc)
+to make the game somewhat finishable.
+
+Let's see if you can collect all ten coins."

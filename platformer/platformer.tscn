@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b27whx2psfubc"]
+[gd_scene load_steps=6 format=3 uid="uid://b27whx2psfubc"]
 
 [ext_resource type="Script" uid="uid://c3ts215po46qc" path="res://platformer/scripts/platformer.gd" id="1_5vjwt"]
-[ext_resource type="AudioStream" uid="uid://8fqpks211glc" path="res://audio/platformer_music.wav" id="3_g7gp6"]
+[ext_resource type="AudioStream" uid="uid://8fqpks211glc" path="res://assets/audio/platformer_music.wav" id="3_g7gp6"]
 [ext_resource type="PackedScene" uid="uid://ymxsgwnms6dt" path="res://platformer/levels/test_level.tscn" id="3_w1qb0"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_w1qb0"]
-a = Vector2(149.75, 9)
-b = Vector2(-1.125, 9)
+[ext_resource type="AudioStream" uid="uid://m1pp4htab1d0" path="res://assets/audio/hurt.wav" id="4_g7gp6"]
+[ext_resource type="FontFile" uid="uid://gk0gonknhs4j" path="res://assets/font/HomeVideo-BLG6G.ttf" id="5_nl76y"]
 
 [node name="Platformer" type="Node2D"]
 texture_filter = 1
@@ -28,10 +26,17 @@ stream = ExtResource("3_g7gp6")
 volume_db = -2.0
 autoplay = true
 
-[node name="Void" type="Area2D" parent="."]
+[node name="HurtSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g7gp6")
+volume_db = -6.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Void"]
-position = Vector2(1.625, 84)
-shape = SubResource("SegmentShape2D_w1qb0")
-
-[connection signal="body_entered" from="Void" to="." method="_on_void_body_entered"]
+[node name="CoinsLabel" type="Label" parent="."]
+offset_left = 3.75
+offset_top = 2.25
+offset_right = 43.75
+offset_bottom = 25.25
+theme_override_colors/font_color = Color(0.117647, 0.376471, 0.431373, 1)
+theme_override_fonts/font = ExtResource("5_nl76y")
+theme_override_font_sizes/font_size = 9
+text = "0/10
+"

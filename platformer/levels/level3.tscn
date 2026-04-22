@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=4 uid="uid://nkluijiholt7"]
+
+[ext_resource type="Texture2D" uid="uid://8jh8pabph1c7" path="res://assets/images/blocks/atlas.png" id="1_2d8ib"]
+[ext_resource type="PackedScene" uid="uid://duhm5hmwdytw6" path="res://platformer/player.tscn" id="2_s3p4g"]
+[ext_resource type="Texture2D" uid="uid://cdtip72ve2yfa" path="res://assets/images/flag_1.png" id="4_cm2ha"]
+[ext_resource type="PackedScene" uid="uid://47a5hap0ihlg" path="res://platformer/coin.tscn" id="4_wj1e5"]
+[ext_resource type="Texture2D" uid="uid://1pc2ay12b7q3" path="res://assets/images/flag_2.png" id="5_e3g4q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wj1e5"]
+texture = ExtResource("1_2d8ib")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[sub_resource type="TileSet" id="TileSet_1fbxk"]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wj1e5")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i061y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cm2ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e3g4q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level3" type="Node2D"]
+texture_filter = 1
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAQAAgAAAAAAAAAAAARAAgAAAABAAAAAAASAAgAAAACAAAAAAASAAkAAAACAAIAAAARAAkAAAABAAIAAAAQAAkAAAAAAAIAAAADAAgAAAACAAAAAAADAAkAAAACAAIAAAACAAgAAAABAAAAAAABAAgAAAABAAAAAAABAAkAAAABAAIAAAACAAkAAAABAAIAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAIAAAAFAAcAAAADAAAAAAAGAAcAAAADAAAAAAAQAAYAAAAAAAIAAAARAAYAAAABAAIAAAASAAYAAAACAAIAAAAQAAUAAAAAAAEAAAAQAAQAAAAAAAEAAAARAAUAAAAFAAAAAAARAAQAAAAFAAAAAAASAAUAAAACAAEAAAASAAQAAAACAAEAAAAQAAMAAAAAAAAAAAARAAMAAAABAAAAAAASAAMAAAACAAAAAAAOAAUAAAADAAAAAAANAAUAAAADAAAAAAAFAAMAAAADAAAAAAAGAAMAAAADAAAAAAAJAAUAAAADAAAAAAAKAAUAAAADAAAAAAALAAUAAAADAAAAAAAPAAUAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_1fbxk")
+
+[node name="Player" parent="." instance=ExtResource("2_s3p4g")]
+position = Vector2(4, 63)
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Normal" parent="Coins" instance=ExtResource("4_wj1e5")]
+position = Vector2(44, 23)
+index = 4
+
+[node name="Secret1" parent="Coins" instance=ExtResource("4_wj1e5")]
+position = Vector2(44, 73)
+index = 5
+is_secret = true
+
+[node name="Secret2" parent="Coins" instance=ExtResource("4_wj1e5")]
+position = Vector2(142, 65)
+index = 6
+is_secret = true
+
+[node name="Flag" type="AnimatedSprite2D" parent="."]
+position = Vector2(143, 20)
+sprite_frames = SubResource("SpriteFrames_i061y")
+autoplay = "default"

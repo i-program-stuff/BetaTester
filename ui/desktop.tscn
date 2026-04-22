@@ -1,0 +1,123 @@
+[gd_scene load_steps=24 format=3 uid="uid://cnbtjtgn6q7g1"]
+
+[ext_resource type="Theme" uid="uid://cu1yfhvb17bn2" path="res://assets/base_theme.tres" id="1_oitjc"]
+[ext_resource type="Script" uid="uid://dwqsga26c7ie6" path="res://ui/scripts/desktop.gd" id="2_wpvx5"]
+[ext_resource type="Texture2D" uid="uid://tgqh2l84n3xf" path="res://assets/images/pn_background.png" id="3_uxiwv"]
+[ext_resource type="PackedScene" uid="uid://bc05bcrqxhvvb" path="res://ui/app_button.tscn" id="4_xxjd0"]
+[ext_resource type="Texture2D" uid="uid://bdp8314iplxjv" path="res://assets/images/mail_icon_2.png" id="5_as8a1"]
+[ext_resource type="Texture2D" uid="uid://dgwo085cnkq3d" path="res://assets/images/mail_icon.png" id="6_fc2w5"]
+[ext_resource type="PackedScene" uid="uid://cjo82jjgns1aa" path="res://ui/mail_window.tscn" id="7_4jqng"]
+[ext_resource type="Texture2D" uid="uid://bpcangdhoof42" path="res://assets/images/enemy/mushroom_1.png" id="8_wad00"]
+[ext_resource type="Texture2D" uid="uid://el3w7pje4emm" path="res://assets/images/editor_icon.png" id="9_dg88f"]
+[ext_resource type="PackedScene" uid="uid://lj2yc3kopeh6" path="res://ui/memory_editor/memory_editor.tscn" id="10_nousl"]
+[ext_resource type="AudioStream" uid="uid://csgxhnk7ff0l0" path="res://assets/audio/pc.ogg" id="11_5ttkj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6f7av"]
+texture = ExtResource("5_as8a1")
+modulate_color = Color(0.760784, 0.760784, 0.760784, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r8dgl"]
+texture = ExtResource("5_as8a1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_majww"]
+texture = ExtResource("6_fc2w5")
+modulate_color = Color(0.760784, 0.760784, 0.760784, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wiyix"]
+texture = ExtResource("6_fc2w5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_otlag"]
+texture = ExtResource("8_wad00")
+modulate_color = Color(0.762404, 0.762404, 0.762403, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjnmq"]
+texture = ExtResource("8_wad00")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cmsrr"]
+texture = ExtResource("8_wad00")
+modulate_color = Color(0.760784, 0.760784, 0.760784, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcmjx"]
+texture = ExtResource("8_wad00")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e4aos"]
+texture = ExtResource("9_dg88f")
+modulate_color = Color(0.762404, 0.762404, 0.762403, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yu0yj"]
+texture = ExtResource("9_dg88f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ye0qy"]
+texture = ExtResource("9_dg88f")
+modulate_color = Color(0.760784, 0.760784, 0.760784, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylx5y"]
+texture = ExtResource("9_dg88f")
+
+[node name="Desktop" type="Control" groups=["Desktop"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oitjc")
+script = ExtResource("2_wpvx5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_uxiwv")
+
+[node name="AppContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 300.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+
+[node name="Mail" parent="AppContainer" instance=ExtResource("4_xxjd0")]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_6f7av")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r8dgl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_majww")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wiyix")
+app_title = "Mail"
+WINDOW = ExtResource("7_4jqng")
+
+[node name="Game" parent="AppContainer" instance=ExtResource("4_xxjd0")]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_otlag")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kjnmq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cmsrr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qcmjx")
+app_title = "SuperCoolGame.exe"
+
+[node name="MemoryEditor" parent="AppContainer" instance=ExtResource("4_xxjd0")]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_e4aos")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yu0yj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ye0qy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ylx5y")
+app_title = "MemoryViewer"
+WINDOW = ExtResource("10_nousl")
+
+[node name="WindowLayer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5ttkj")
+volume_db = -12.0
+autoplay = true

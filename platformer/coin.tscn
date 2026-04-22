@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://47a5hap0ihlg"]
 
 [ext_resource type="Script" uid="uid://cangq314hayd5" path="res://platformer/scripts/coin.gd" id="1_cyv06"]
-[ext_resource type="Texture2D" uid="uid://c5okqd1kutcar" path="res://images/coin/coin_1.png" id="2_vjba6"]
-[ext_resource type="AudioStream" uid="uid://dob8w4lbm87je" path="res://audio/coin.wav" id="3_tkmkx"]
-[ext_resource type="Texture2D" uid="uid://cxifk5ouv8e2b" path="res://images/coin/coin_2.png" id="3_twlu7"]
-[ext_resource type="Texture2D" uid="uid://c1vkfm00re5gd" path="res://images/coin/coin_3.png" id="4_tf3wt"]
-[ext_resource type="Texture2D" uid="uid://dyqejymk72nd" path="res://images/coin/coin_4.png" id="5_fxlpl"]
-[ext_resource type="Texture2D" uid="uid://drgneq35xlfw1" path="res://images/coin/coin_5.png" id="6_pdasy"]
+[ext_resource type="Texture2D" uid="uid://c5okqd1kutcar" path="res://assets/images/coin/coin_1.png" id="2_vjba6"]
+[ext_resource type="AudioStream" uid="uid://dob8w4lbm87je" path="res://assets/audio/coin.wav" id="3_tkmkx"]
+[ext_resource type="Texture2D" uid="uid://cxifk5ouv8e2b" path="res://assets/images/coin/coin_2.png" id="3_twlu7"]
+[ext_resource type="Texture2D" uid="uid://c1vkfm00re5gd" path="res://assets/images/coin/coin_3.png" id="4_tf3wt"]
+[ext_resource type="Texture2D" uid="uid://dyqejymk72nd" path="res://assets/images/coin/coin_4.png" id="5_fxlpl"]
+[ext_resource type="Texture2D" uid="uid://drgneq35xlfw1" path="res://assets/images/coin/coin_5.png" id="6_pdasy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tkmkx"]
 animations = [{
@@ -34,7 +34,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwhx0"]
 size = Vector2(7.5, 8.75)
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["Coin"]]
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_cyv06")
 
@@ -44,8 +44,8 @@ sprite_frames = SubResource("SpriteFrames_tkmkx")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3.72529e-07, -5.625)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nwhx0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
